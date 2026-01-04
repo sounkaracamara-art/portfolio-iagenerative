@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio IA – Écriture multimédia</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap');
@@ -206,6 +207,123 @@
       font-weight: 600;
       text-align: center;
       padding: 20px;
+      border-radius: 12px;
+      min-height: 300px;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .video-wrapper {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .video {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+
+    .section-subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #7a4a2b;
+    }
+
+    .prompt-image {
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .prompt-image:hover {
+      transform: scale(1.02);
+    }
+
+    #prod3-galerie .gal-block{
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,79,163,0.15);
+    }
+    #prod3-galerie .gal-title{
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #7a4a2b;
+      margin-bottom: 14px;
+    }
+    #prod3-galerie .two-col,
+    #prod3-galerie .three-col{
+      display:grid;
+      gap:18px;
+    }
+    @media (min-width:768px){
+      #prod3-galerie .two-col{ grid-template-columns:1fr 1fr; }
+      #prod3-galerie .three-col{ grid-template-columns:1fr 1fr 1fr; }
+    }
+    #prod3-galerie .img-card{
+      background:#fff;
+      border-radius:18px;
+      padding:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+    }
+    #prod3-galerie .img-card img{
+      width: 100%;
+      height: 450px;
+      object-fit: contain;
+      border-radius: 14px;
+      display:block;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      background: #f8f8f8;
+    }
+
+    #prod3-galerie .img-card img:hover{
+      transform: scale(1.03);
+    }
+
+    #prod3-galerie .img-card.single img{
+      height: 650px;
+    }
+    #prod3-galerie figcaption{
+      margin-top:10px;
+      font-weight:600;
+      color:#7a4a2b;
+    }
+
+    .bullets {
+      list-style: none;
+      padding: 0;
+    }
+    .bullets li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+    .bullets li:before {
+      content: "•";
+      color: #ff4fa3;
+      font-size: 24px;
+      position: absolute;
+      left: 0;
+      top: 4px;
     }
   </style>
 </head>
@@ -217,14 +335,12 @@
       <div class="flex justify-between items-center">
         <a href="#accueil" class="font-bold text-xl text-[#ff4fa3]">Portfolio IA</a>
         
-        <!-- Menu burger button -->
         <button id="menuToggle" class="md:hidden flex flex-col gap-1.5 w-8 h-8 justify-center items-center focus:outline-none">
           <span class="block w-6 h-0.5 bg-[#ff4fa3] transition-all duration-300"></span>
           <span class="block w-6 h-0.5 bg-[#ff4fa3] transition-all duration-300"></span>
           <span class="block w-6 h-0.5 bg-[#ff4fa3] transition-all duration-300"></span>
         </button>
         
-        <!-- Desktop menu -->
         <div class="hidden md:flex gap-6 text-sm">
           <a href="#accueil" class="font-medium text-[#ff4fa3]">Accueil</a>
           <a href="#introduction" class="hover:text-[#ff4fa3]">Introduction</a>
@@ -234,7 +350,6 @@
         </div>
       </div>
       
-      <!-- Mobile menu -->
       <div id="mobileMenu" class="md:hidden hidden mt-4 flex flex-col gap-4 text-sm">
         <a href="#accueil" class="font-medium text-[#ff4fa3] py-2">Accueil</a>
         <a href="#introduction" class="hover:text-[#ff4fa3] py-2">Introduction</a>
@@ -248,7 +363,7 @@
   <section id="accueil" class="min-h-screen flex items-center justify-center px-6 pt-20">
     <div class="text-center max-w-4xl">
       <div class="mb-8 flex justify-center">
-        <img src="intro.png" 
+        <img src="images/intro.png" 
              alt="Illustration IA Creative" 
              class="w-64 h-64 md:w-80 md:h-80 object-contain rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
              style="box-shadow: 0 20px 60px rgba(255, 79, 163, 0.3); background: white;">
@@ -323,13 +438,13 @@
         <div class="card">
           <h3 class="text-xl font-semibold mb-4 text-[#7a4a2b]">Ce que je sais faire</h3>
           <p class="leading-relaxed mb-4">J'ai amélioré un site web en HTML avec Canva IA Code et Claude, un outil que je ne connaissais pas avant. J'ai aussi réutilisé l'IA dans d'autres cours, comme en pratique collaborative.</p>
-          <a href="https://playandpixel.be/" target="_blank" rel="noopener noreferrer" class="inline-block text-[#ff4fa3] hover:text-[#7a4a2b] font-semibold underline">Play & Pixel - Agence Digitale Créative</a>
+          <a href="https://sounkaracamara-art.github.io/playandpixel/" target="_blank" rel="noopener noreferrer" class="inline-block text-[#ff4fa3] hover:text-[#7a4a2b] font-semibold underline">Play & Pixel - Agence Digitale Créative</a>
         </div>
       </div>
       
       <div class="highlight-box text-center">
         <h4 class="font-semibold text-2xl mb-4">Ma méthode</h4>
-        <p class="text-2xl font-bold">Tester → Trier → Éditer → Assumer mes choix</p>
+        <p class="text-2xl font-bold">Tester → Le cours m'a permis de mieux comprendre comment dialoguer avec l'IA, notamment grâce au travail sur les prompts et aux expérimentations. Pour la suite, je souhaite l'utiliser comme un outil d'aide, tout en gardant le contrôle sur le sens et les choix créatifs.</p>
       </div>
     </div>
   </section>
@@ -368,15 +483,16 @@
       <div class="production-card">
         <h3 class="text-3xl font-bold text-[#7a4a2b] mb-8">Production 1 : Défi de génération d'image</h3>
         
-      <div class="mb-8 flex justify-center">
-  <img 
-    src="Images/fillerousse.png"
-    alt="Image générée - fille rousse"
-    class="max-w-full h-auto rounded-xl shadow-lg"
-    style="max-height: 500px; object-fit: contain;"
-  >
-</div>
-
+        <div class="mb-8 flex justify-center gap-6 flex-wrap">
+          <img src="images/fillerousse.png" 
+               alt="Image générée - fille rousse version 1" 
+               class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+               style="width: 45%; min-width: 350px; height: auto; max-height: 600px; object-fit: contain;">
+          <img src="images/fillerousse2.png" 
+               alt="Image générée - fille rousse version 2" 
+               class="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+               style="width: 45%; min-width: 350px; height: auto; max-height: 600px; object-fit: contain;">
+        </div>
         
         <div class="mb-8">
           <h4 class="font-semibold mb-3 text-xl text-[#ff4fa3]">Intention</h4>
@@ -398,101 +514,50 @@
       </div>
 
       <div class="production-card">
-        <h3 class="text-3xl font-bold text-[#7a4a2b] mb-8">Production 2 : Visuel IA + Texte</h3>
-        
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div>
-            <h4 class="font-semibold mb-3 text-xl text-[#ff4fa3]">Intention</h4>
-            <p class="leading-relaxed text-lg">Créer une illustration pour accompagner un projet de storytelling digital sur le thème de la transformation.</p>
-          </div>
-          <div>
-            <h4 class="font-semibold mb-3 text-xl text-[#ff4fa3]">Outils utilisés</h4>
-            <p class="leading-relaxed text-lg">Midjourney, Playground AI, Photoshop</p>
-          </div>
-        </div>
-        
-        <div class="mb-8">
-          <h4 class="font-semibold mb-4 text-xl text-[#ff4fa3]">Évolution du prompt</h4>
-          <div class="prompt-box mb-4">
-            <p class="text-xs uppercase tracking-wide mb-2 opacity-60">Avant</p>
-            <p>"Une personne qui change"</p>
-          </div>
-          <div class="prompt-box">
-            <p class="text-xs uppercase tracking-wide mb-2 opacity-60">Après</p>
-            <p>"Digital illustration of a person transforming into butterflies, soft pastel colors (pink #ff4fa3, cream #fbfbff, brown #7a4a2b), dreamy atmosphere, particles of light, minimalist style, high quality, 16:9 aspect ratio --ar 16:9 --style raw"</p>
-          </div>
-        </div>
-        
-        <div>
-          <h4 class="font-semibold mb-4 text-xl text-[#ff4fa3]">Analyse critique</h4>
-          <p class="leading-relaxed text-lg mb-4"><strong>IA vs moi :</strong> L'IA a généré l'image de base, mais j'ai dû faire 12 itérations pour obtenir la bonne composition. J'ai ensuite retouché les couleurs et ajouté des détails dans Photoshop.</p>
-          <p class="leading-relaxed text-lg mb-4"><strong>Limites :</strong> Difficulté à contrôler précisément la pose et l'expression. Certains détails anatomiques étaient incorrects.</p>
-          <p class="leading-relaxed text-lg"><strong>Ce que je referais :</strong> Utiliser des images de référence, être plus précise sur l'angle de vue, et prévoir du temps pour la post-production.</p>
-        </div>
-      </div>
+        <h3 class="text-3xl font-bold text-[#7a4a2b] mb-8">Production 2 : Vidéo cinématographique vintage</h3>
+        <p class="text-sm uppercase tracking-wide mb-12 opacity-60">IA générative — images vers vidéo</p>
 
-      <div class="production-card">
-        <h3 class="text-3xl font-bold text-[#7a4a2b] mb-8">Production 3 : Prototype interactif</h3>
-        
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div>
-            <h4 class="font-semibold mb-3 text-xl text-[#ff4fa3]">Intention</h4>
-            <p class="leading-relaxed text-lg">Créer un prototype de site web interactif pour présenter un projet multimédia avec animations et navigation fluide.</p>
-          </div>
-          <div>
-            <h4 class="font-semibold mb-3 text-xl text-[#ff4fa3]">Outils utilisés</h4>
-            <p class="leading-relaxed text-lg">Canva IA Code, Claude, VS Code</p>
-          </div>
+        <div class="mb-8 flex justify-center">
+          <img src="images/page.png" alt="Scènes du projet vidéo" class="w-full max-w-4xl rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
         </div>
-        
-        <div class="mb-8">
-          <h4 class="font-semibold mb-4 text-xl text-[#ff4fa3]">Évolution du prompt</h4>
-          <div class="prompt-box mb-4">
-            <p class="text-xs uppercase tracking-wide mb-2 opacity-60">Avant</p>
-            <p>"Fais-moi un site web"</p>
-          </div>
-          <div class="prompt-box">
-            <p class="text-xs uppercase tracking-wide mb-2 opacity-60">Après</p>
-            <p>"Crée un site web one-page avec navigation par ancres. Style moderne et doux avec fond clair (#fbfbff), accent rose (#ff4fa3) et brun (#7a4a2b). Inclure : header fixe, 4 sections avec animations au scroll, footer. Responsive design. Utiliser Tailwind CSS."</p>
-          </div>
+
+        <div class="video-wrapper">
+          <h4 class="section-subtitle">Vidéo finale</h4>
+          <video controls class="video">
+            <source src="images/video.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
         </div>
-        
-        <div>
-          <h4 class="font-semibold mb-4 text-xl text-[#ff4fa3]">Analyse critique</h4>
-          <p class="leading-relaxed text-lg mb-4"><strong>IA vs moi :</strong> L'IA a généré 80% du code de base. J'ai ajusté les animations, personnalisé les couleurs exactes, et optimisé la performance.</p>
-          <p class="leading-relaxed text-lg mb-4"><strong>Limites :</strong> Le code initial n'était pas optimisé pour mobile. Certaines animations étaient trop lourdes.</p>
-          <p class="leading-relaxed text-lg"><strong>Ce que je referais :</strong> Spécifier dès le départ les contraintes de performance et les breakpoints mobile. Demander un code plus modulaire.</p>
+
+        <div class="card mt-12">
+          <h4 class="text-2xl font-semibold mb-4 text-[#7a4a2b]">Méthodologie</h4>
+          <p class="text-lg leading-relaxed mb-4">
+            L'objectif était de créer une vidéo courte à l'esthétique cinématographique vintage, proche d'un teaser.
+            J'ai commencé par imaginer un mini-scénario découpé en six scènes, puis généré six images servant de base visuelle.
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            Une fois les images obtenues, j'ai utilisé un outil d'IA de génération vidéo à partir d'images.
+            Le script existait déjà, mais je l'ai amélioré et précisé afin de renforcer la narration et le suspense.
+          </p>
+
+          <h5 class="font-semibold mb-3 text-[#ff4fa3]">Prompt utilisé</h5>
+          <img src="images/promptvideo.png" alt="Capture d'écran du prompt vidéo" class="prompt-image">
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="conclusion" class="py-24 px-6 bg-white/50">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-5xl font-bold mb-12 text-[#ff4fa3]">Conclusion</h2>
-      <div class="card mb-8">
-        <h3 class="text-2xl font-semibold mb-4 text-[#7a4a2b]">Ce que ce cours a changé</h3>
-        <p class="text-lg leading-relaxed mb-4">
-          Ce cours m'a appris à utiliser l'IA de manière plus stratégique et consciente. Je ne la vois plus comme une simple aide ponctuelle, mais comme un véritable outil de travail que je peux maîtriser et adapter à mes besoins.
-        </p>
-      </div>
-      <div class="highlight-box mb-8">
-        <h4 class="font-semibold text-xl mb-3">Ma règle personnelle</h4>
-        <p class="text-2xl">L'IA propose, je dispose. Elle accélère, je dirige.</p>
-      </div>
-      <div class="card">
-        <h3 class="text-2xl font-semibold mb-4 text-[#7a4a2b]">Ce que je veux continuer à développer</h3>
-        <p class="text-lg leading-relaxed">
-          Je veux continuer à explorer de nouveaux outils, affiner mes techniques de prompting, et surtout trouver le bon équilibre entre efficacité et authenticité. Mon objectif : que l'IA soit invisible dans le résultat final, mais précieuse dans le processus.
-        </p>
-      </div>
-    </div>
-  </section>
+        <div class="card mt-8">
+          <h4 class="text-2xl font-semibold mb-4 text-[#7a4a2b]">Résultat</h4>
+          <p class="text-lg leading-relaxed">
+            Le résultat est une vidéo verticale courte composée de six scènes. L'univers visuel est cohérent
+            et cinématographique, avec une intention de teaser clairement identifiable.
+          </p>
+        </div>
 
-  <footer class="py-12 px-6 text-center bg-white/50">
-    <p class="opacity-60">Sounkara CAMARA • Portfolio IA – Écriture multimédia • 2026</p>
-  </footer>
-
-  <script>
-    // Bubbles animation
-    const bubblesContainer = document.getElementById('bubbles');
+        <div class="card mt-8">
+          <h4 class="text-2xl font-semibold mb-4 text-[#7a4a2b]">Analyse critique</h4>
+          <p class="text-lg leading-relaxed mb-4">
+            Les images générées sont de bonne qualité et correspondent bien à l'ambiance recherchée.
+            En revanche, les cuts et transitions vidéo manquent parfois de fluidité, ce qui donne un rendu
+            moins professionnel qu'un montage entièrement manuel.
+          </p>
+          <p class="text-lg leading-relaxed mb-4">
+            <strong
